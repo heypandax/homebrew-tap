@@ -4,24 +4,19 @@
 # Releases (heypandax/cc-pocket) — the url below points there. The tap holds only this description.
 # Users: brew install --cask heypandax/tap/cc-pocket
 cask "cc-pocket" do
-  version "1.5.1"
-
   # Apple Silicon and Intel each get their own notarized build (jpackage bundles an arch-specific
   # JRE — see .github/workflows/release.yml). `arch` maps the running CPU to the asset suffix; the
   # sha256 differs per arch. Refresh BOTH after each release run (notarized tarballs aren't
   # bit-reproducible, so even the arm64 sha changes on a rebuild).
   arch arm: "arm64", intel: "x86_64"
 
-  on_arm do
-    sha256 "5fb29920c1947e9bff9fd1c7376baa66d95cc92ef4aa49ac33369001cd6f51b0"
-  end
-  on_intel do
-    sha256 "6358f08f62a445d66b7692fcc827229f890a3a55bbba2a0af03ee13c72978ef9"
-  end
+  version "1.5.2"
+  sha256 arm:   "d650841121b09c1e965bcc5942436e9b14809fbe41debbec8caf6fbeae089ed9",
+         intel: "0c210d32794e15807f317768f377eee443f6fa8c142a5ca1a06216bca3748928"
 
   url "https://github.com/heypandax/cc-pocket/releases/download/v#{version}/cc-pocket-daemon-#{version}-macos-#{arch}.tar.gz"
   name "CC Pocket daemon"
-  desc "Drive Claude Code on your Mac from your phone over a zero-knowledge E2E relay"
+  desc "Drive Claude Code from your phone over a zero-knowledge E2E relay"
   homepage "https://github.com/heypandax/cc-pocket"
 
   # the launcher lives in a self-contained .app (bundled JRE); symlink it onto PATH
@@ -40,9 +35,9 @@ cask "cc-pocket" do
 
   # `brew uninstall --zap` also wipes the agent, logs, and the daemon identity/pairings.
   zap trash: [
+    "~/.cc-pocket",
     "~/Library/LaunchAgents/dev.ccpocket.daemon.plist",
     "~/Library/Logs/cc-pocket",
-    "~/.cc-pocket",
   ]
 
   caveats <<~EOS
