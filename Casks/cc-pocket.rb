@@ -10,9 +10,9 @@ cask "cc-pocket" do
   # bit-reproducible, so even the arm64 sha changes on a rebuild).
   arch arm: "arm64", intel: "x86_64"
 
-  version "1.5.2"
-  sha256 arm:   "d650841121b09c1e965bcc5942436e9b14809fbe41debbec8caf6fbeae089ed9",
-         intel: "0c210d32794e15807f317768f377eee443f6fa8c142a5ca1a06216bca3748928"
+  version "1.5.3"
+  sha256 arm:   "23bc1c35bb559c71da29396c01cf64dc877f04d0078cdf46cfda06fd18ccb63f",
+         intel: "60cded68458f7d2ec70e372edbdb23cc6a3af2b2b45a0ea535ebdcd042994f21"
 
   url "https://github.com/heypandax/cc-pocket/releases/download/v#{version}/cc-pocket-daemon-#{version}-macos-#{arch}.tar.gz"
   name "CC Pocket daemon"
@@ -54,3 +54,4 @@ cask "cc-pocket" do
       brew install whisper-cpp
   EOS
 end
+
