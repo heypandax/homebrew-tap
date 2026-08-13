@@ -11,8 +11,6 @@ cask "cc-pocket" do
   arch arm: "arm64", intel: "x86_64"
 
   version "1.7.7"
-  # During release preparation these remain the last published hashes. Replace both from the
-  # notarized v1.7.7 assets before copying this template to heypandax/homebrew-tap.
   sha256 arm:   "ab6665a8a9055e29160ff1fe63424880ba0dcb40c5647364d7e9beff202787a5",
          intel: "7bb244af1c03350ecc6a823d905a0e29f4768af66d493136dd1b46f2698c2db7"
 
