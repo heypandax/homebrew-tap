@@ -10,9 +10,9 @@ cask "cc-pocket" do
   # bit-reproducible, so even the arm64 sha changes on a rebuild).
   arch arm: "arm64", intel: "x86_64"
 
-  version "1.9.8"
-  sha256 arm:   "ad95ba3cd72225fad3a408813793c3ddbc40190f3a2d8eb57d7e7cbf68f60e89",
-         intel: "5eabad14feb4d44f0370e394e419d3fb3913af60514cf468da4634a578475e3b"
+  version "2.0.0"
+  sha256 arm:   "c228f5f7b37b2b176eb846675c04721072e218f8256cee22fabe12807c5c3621",
+         intel: "f4e31b19ff3124d71d3b7dfefe2ffca3231518aa262821a8188a5b488911eb1d"
 
   url "https://github.com/heypandax/cc-pocket/releases/download/v#{version}/cc-pocket-daemon-#{version}-macos-#{arch}.tar.gz"
   name "CC Pocket daemon"
@@ -21,6 +21,7 @@ cask "cc-pocket" do
 
   # the launcher lives in a self-contained .app (bundled JRE); symlink it onto PATH
   binary "cc-pocket-daemon.app/Contents/MacOS/cc-pocket-daemon"
+  binary "cc-pocket-daemon.app/Contents/MacOS/cc-pocket-daemon", target: "pairlet"
 
   # Install the login service right away so the daemon auto-starts on every boot and auto-reconnects
   # with no extra command. service-install writes ~/Library/LaunchAgents/dev.ccpocket.daemon.plist
@@ -46,7 +47,8 @@ cask "cc-pocket" do
 
     The daemon was installed as a login service — it auto-starts on boot and reconnects.
     Just pair your phone:
-      cc-pocket-daemon pair                        # shows a QR + 6-digit code
+      pairlet pair                                # shows a QR + 6-digit code
+      # cc-pocket-daemon remains available with the same subcommands.
 
     Logs:  ~/Library/Logs/cc-pocket/daemon.err.log
 
